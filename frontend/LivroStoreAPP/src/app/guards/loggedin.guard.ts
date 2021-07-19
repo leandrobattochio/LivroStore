@@ -10,7 +10,8 @@ export class LoggedinGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-
+      // Guard das rotas que precisam estar logado.
+      // Apenas verifica se existe a key do token no localstorage.
       var token = localStorage.getItem("token");
 
       if(token) {

@@ -4,6 +4,7 @@ import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { Livro } from '../domain/livro';
 
+/// Aqui ficam guardados todos os métodos do dominio de Livro.
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,13 @@ export class LivroService {
 
   constructor(private http: HttpClient) { }
 
-  public getLivros(palavraChave: string, dataInicial: Date, dataFinal: Date): Observable<any> {
+  public getLivros(palavraChave: string, dataInicial: Date, dataFinal: Date, order: string): Observable<any> {
 
     var params = new HttpParams()
     .set('PalavraChave', palavraChave)
     .set('DataInicio',  (dataInicial != undefined) ? dataInicial.toISOString() : "")
-    .set('DataFim', (dataFinal != undefined) ? dataFinal.toISOString() : "");
+    .set('DataFim', (dataFinal != undefined) ? dataFinal.toISOString() : "")
+    .set('Order', order);
     
     return this.http.get("https://localhost:5001/api/v1/livro?" + params.toString());
   }

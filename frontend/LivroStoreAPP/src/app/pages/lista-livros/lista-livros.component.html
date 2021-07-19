@@ -14,6 +14,11 @@
         <input matInput type="date" name="dataFim" [(ngModel)]="dataFinal">
     </mat-form-field>
 
+    <mat-radio-group [(ngModel)]="order" name="order" aria-label="Ordenação">
+        <mat-radio-button value="asc">A-Z</mat-radio-button>
+        <mat-radio-button value="desc">Z-A</mat-radio-button>
+    </mat-radio-group>
+
     <button mat-raised-button (click)="filtrar()">Filtrar</button>
 </form>
 

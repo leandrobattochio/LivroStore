@@ -17,6 +17,9 @@ namespace Livraria.API.Application.Queries
         [FromQuery]
         public DateTime DataFim { get; set; }
 
+        [FromQuery]
+        public string Order { get; set; }
+
         public ObterLivrosQuery()
         {
 

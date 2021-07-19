@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginUsuarioCommand, RegistrarUsuarioCommand } from '../domain/livro';
 
+
+/// Aqui ficam guardados todos os métodos do dominio de Autenticação.
 @Injectable({
   providedIn: 'root'
 })

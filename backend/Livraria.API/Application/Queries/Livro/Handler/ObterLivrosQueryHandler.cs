@@ -38,6 +38,23 @@ namespace Livraria.API.Application.Queries.Handler
                     .AsQueryable();
             }
 
+            // Filtra por A-Z ou Z-A
+            if (request?.Order != "")
+            {
+                if (request.Order.Equals("asc", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    livrosQuery = livrosQuery
+                        .OrderBy(c => c.Titulo)
+                        .AsQueryable();
+                }
+                else
+                {
+                    livrosQuery = livrosQuery
+                        .OrderByDescending(c => c.Titulo)
+                        .AsQueryable();
+                }
+            }
+
             // Executa a Query
             var livrosMapped = await livrosQuery
                 .Select(c => new ObterLivrosQueryRetorno.Item(c.Id, c.ImagemCapa, c.Titulo, c.ISBN, c.Editora, c.Autor, c.Sinopse,

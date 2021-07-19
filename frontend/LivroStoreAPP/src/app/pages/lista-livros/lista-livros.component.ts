@@ -16,7 +16,7 @@ export class ListaLivrosComponent implements OnInit {
 
   dataInicial!: Date;
   dataFinal!: Date;
-
+  order: string = "asc";
   palavraChave: string = "";
 
   public filtrar() {
@@ -31,7 +31,7 @@ export class ListaLivrosComponent implements OnInit {
   }
 
   private obterLivros(palavraChave: string, dataInicial: Date, dataFinal: Date) {
-    this.service.getLivros(palavraChave, dataInicial, dataFinal)
+    this.service.getLivros(palavraChave, dataInicial, dataFinal, this.order)
       .toPromise()
       .then((r) => {
         if (r != undefined && r.itens != undefined) {
