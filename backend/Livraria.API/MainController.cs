@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace Livraria.API
 {
 
-
+    /// <summary>
+    /// Clase base para os Controladores, com métodos básicos para adicionar erros
+    /// e padronizar a resposta em caso de sucesso ou falhas.
+    /// </summary>
     public abstract class MainController : ControllerBase
     {
         protected ICollection<string> Erros = new List<string>();
@@ -39,17 +42,6 @@ namespace Livraria.API
             }
 
             return CustomResponse(commandResult.ValidationResult);
-        }
-
-        protected ActionResult CustomResponse(ModelStateDictionary modelState)
-        {
-            var erros = modelState.Values.SelectMany(e => e.Errors);
-            foreach (var erro in erros)
-            {
-                AdicionarErroProcessamento(erro.ErrorMessage);
-            }
-
-            return CustomResponse();
         }
 
         protected ActionResult CustomResponse(ValidationResult validationResult)

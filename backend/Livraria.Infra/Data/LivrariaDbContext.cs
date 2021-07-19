@@ -19,6 +19,10 @@ namespace Livraria.Infra.Data
 
         }
 
+        /// <summary>
+        /// Após fazer qualquer alteração no contexto, precisa chamar esse método pra "Comittar" o comando SQL feito no banco.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<ValidationFailure>> Commit()
         {
             var errors = new List<ValidationFailure>();

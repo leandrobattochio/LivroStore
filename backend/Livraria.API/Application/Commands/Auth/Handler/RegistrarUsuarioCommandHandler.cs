@@ -21,12 +21,16 @@ namespace Livraria.API.Application.Commands
 
             var resultado = await _userManager.CreateAsync(usuario, request.Body.Senha);
 
-            if(request.Body.TipoUsuario == enTipoUsuario.Administrador)
+            // Adiciona o usuario na Role
+            var user = await _userManager.FindByNameAsync(request.Body.Usuario);
+
+            if (request.Body.TipoUsuario == enTipoUsuario.Administrador)
             {
+                await _userManager.AddToRoleAsync(user, "Administrador");
             }
             else
             {
-
+                await _userManager.AddToRoleAsync(user, "Normal");
             }
 
             // Adiciona erros se houver algum

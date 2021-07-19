@@ -13,10 +13,10 @@ export class Livro {
 
 
 export class RegistrarUsuarioCommand {
-    usuario!: string;
-    senha!: string;
-    email!: string;
-    tipousuario!: number;
+    Usuario!: string;
+    Senha!: string;
+    Email!: string;
+    TipoUsuario!: number;
 }
 
 export class LoginUsuarioCommand {

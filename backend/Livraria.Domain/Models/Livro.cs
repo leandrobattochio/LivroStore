@@ -6,8 +6,18 @@ namespace Livraria.Domain.Models
     /// <summary>
     /// Entidade dos livros.
     /// </summary>
-    public class Livro : BaseEntity, IAggregatRoot
+    public class Livro : BaseEntity
     {
+        /// <summary>
+        /// Construtor da entidade "Livro".
+        /// </summary>
+        /// <param name="imagemCapa"></param>
+        /// <param name="titulo"></param>
+        /// <param name="iSBN"></param>
+        /// <param name="editora"></param>
+        /// <param name="autor"></param>
+        /// <param name="sinopse"></param>
+        /// <param name="dataPublicacao"></param>
         public Livro(string imagemCapa, string titulo, string iSBN, string editora, string autor, string sinopse, DateTime dataPublicacao)
         {
             ImagemCapa = imagemCapa;
@@ -30,6 +40,10 @@ namespace Livraria.Domain.Models
 
         }
 
+
+        // Dominios ricos: setter privado.
+        // Qualquer alteração deve ser feita através de métodos
+        // da propria entidade.
         public string ImagemCapa { get; private set; }
         public string Titulo { get; private set; }
         public string ISBN { get; private set; }

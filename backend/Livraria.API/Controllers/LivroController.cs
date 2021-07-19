@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Livraria.API.Controllers
 {
     
+    /// <summary>
+    /// Controller dos livros.
+    /// </summary>
     [Route("api/v1/livro")]
     public class LivroController : MainController
     {
@@ -24,7 +27,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create(AdicionarLivroCommand command)
         {
             // Validação do comando
@@ -40,7 +43,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{LivroId}")]
-        [Authorize(Roles = "Atualizar")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Update(AtualizarLivroCommand command)
         {
             // Validação do comando
@@ -56,7 +59,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpDelete("{LivroId}")]
-        [Authorize(Roles = "Excluir")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Excluir(ExcluirLivroCommand command)
         {
             // Validação do Comando
@@ -72,6 +75,7 @@ namespace Livraria.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> ObterTodos(ObterLivrosQuery query)
         {
             // Validação da query

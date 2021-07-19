@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Livraria.API.Application.Commands
 {
+    /// <summary>
+    /// Contrutor do command handler Auth, centralizando as injeções de dependência.
+    /// </summary>
     public partial class AuthCommandHandler : CommandHandler
     {
         private readonly LivrariaDbContext _context;

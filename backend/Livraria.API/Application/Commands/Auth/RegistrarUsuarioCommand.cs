@@ -42,7 +42,7 @@ namespace Livraria.API.Application.Commands
             public string Usuario { get; set; }
             public string Senha { get; set; }
             public string Email { get; set; }
-            public enTipoUsuario TipoUsuario { get;set; }
+            public enTipoUsuario TipoUsuario { get; set; }
         }
     }
 

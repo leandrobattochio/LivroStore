@@ -10,9 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegistroComponent implements OnInit {
 
 
-  usuario : string = "";
-  senha : string = "";
-  email : string = "";
+  usuario : string = "teste";
+  senha : string = "123456";
+  email : string = "asd@asd.com.br";
   tipo : number = 2;
 
   constructor(private service: AuthService) { }
@@ -23,10 +23,10 @@ export class RegistroComponent implements OnInit {
   public cadastrar() {
 
     var command = new RegistrarUsuarioCommand();
-    command.email = this.email;
-    command.senha = this.senha;
-    command.usuario = this.usuario;
-    command.tipousuario = this.tipo;
+    command.Email = this.email;
+    command.Senha = this.senha;
+    command.Usuario = this.usuario;
+    command.TipoUsuario = this.tipo;
 
     this.service.cadastrar(command).toPromise()
       .then((r) => {

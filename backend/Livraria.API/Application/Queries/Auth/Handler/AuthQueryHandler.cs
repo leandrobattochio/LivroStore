@@ -6,6 +6,9 @@ using Microsoft.Extensions.Options;
 
 namespace Livraria.API.Application.Queries
 {
+    /// <summary>
+    /// Construtor do handler, centralizando as injeções de dependência
+    /// </summary>
     public partial class AuthQueryHandler : CommandHandler
     {
         private readonly LivrariaDbContext _context;

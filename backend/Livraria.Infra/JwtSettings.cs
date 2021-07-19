@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Livraria.Infra
 {
+    /// <summary>
+    /// Classe representa as configurações do JWT do appsettings.json
+    /// </summary>
     public class JwtSettings
     {
         public string Key { get; set; }

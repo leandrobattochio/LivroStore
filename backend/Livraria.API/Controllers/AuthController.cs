@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Livraria.API.Controllers
 {
     /// <summary>
-    /// Controlador
+    /// Controlador das rotas de login e registro de contas
     /// </summary>
-    [Authorize]
     [Route("api/v1/auth")]
     public class AuthController : MainController
     {
@@ -25,7 +24,6 @@ namespace Livraria.API.Controllers
         /// Registra um usuario no sistema
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
         [HttpPost("registrar")]
         public async Task<IActionResult> Registrar(RegistrarUsuarioCommand command)
         {
@@ -41,7 +39,6 @@ namespace Livraria.API.Controllers
         /// interna da lógica como QUERY.
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> LogarUsuario(LogarUsuarioQuery query)
         {

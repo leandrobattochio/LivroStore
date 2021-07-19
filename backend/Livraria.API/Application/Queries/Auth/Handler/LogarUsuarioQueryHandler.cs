@@ -19,6 +19,7 @@ namespace Livraria.API.Application.Queries
         {
             if (!request.IsValid()) return new QueryResponseMessage<LogarUsuarioQueryResult>(request.GetValidationResult());
 
+            // Tenta fazer o login com o usuario e a senha.
             var signInResult = await _signInManager.PasswordSignInAsync(request.Body.Usuario, request.Body.Senha, false, true);
             
             if (signInResult.Succeeded)
@@ -26,7 +27,10 @@ namespace Livraria.API.Application.Queries
                 return new QueryResponseMessage<LogarUsuarioQueryResult>(ValidationResult, await GerarTokenJWT(request.Body.Usuario));
             }
 
+            // Da uma mensagem de erro generico.
+            // A pessoa não pode saber se ela acertou o usuario mas errou a senha, por exemplo.
             AdicionarErro("Nome de usuario ou senha invalidos!");
+
             return new QueryResponseMessage<LogarUsuarioQueryResult>(ValidationResult);
         }
 
@@ -49,11 +53,6 @@ namespace Livraria.API.Application.Queries
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                //Subject = new ClaimsIdentity(new Claim[]
-                //{
-                //    new Claim(ClaimTypes.Name, user.Username.ToString()),
-                //    new Claim(ClaimTypes.Role, user.Role.ToString())
-                //}),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
