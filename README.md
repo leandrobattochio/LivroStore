@@ -9,11 +9,7 @@ Escopo
 
 Loja de livros. Deve ser possível visualizar listas de livros, realizar buscas e entrar nos detalhes de um livro lendo as principais informações.
 
-Não é preciso ter o processo de compra de livro.
 
-Pode ser utilizado algum template pronto, não é necessário layout customizado.
-
- 
 
 Sobre os Livros
 
