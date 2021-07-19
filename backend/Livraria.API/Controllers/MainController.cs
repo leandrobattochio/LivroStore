@@ -5,7 +5,7 @@ using Livraria.Infra.Messages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Livraria.API
+namespace Livraria.API.Controllers
 {
 
     /// <summary>
