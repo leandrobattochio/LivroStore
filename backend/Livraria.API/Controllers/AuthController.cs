@@ -1,10 +1,16 @@
 using System.Threading.Tasks;
 using Livraria.API.Application.Commands;
+using Livraria.API.Application.Queries;
 using Livraria.Infra.Messages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.API.Controllers
 {
+    /// <summary>
+    /// Controlador
+    /// </summary>
+    [Authorize]
     [Route("api/v1/auth")]
     public class AuthController : MainController
     {
@@ -19,6 +25,7 @@ namespace Livraria.API.Controllers
         /// Registra um usuario no sistema
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost("registrar")]
         public async Task<IActionResult> Registrar(RegistrarUsuarioCommand command)
         {
@@ -27,14 +34,32 @@ namespace Livraria.API.Controllers
             return CustomResponse(await _mediator.EnviarComando(command));
         }
 
-        // /// <summary>
-        // /// Faz o login do usuario
-        // /// </summary>
-        // /// <returns></returns>
-        // [HttpPost("login")]
-        // public async Task<IActionResult> Login()
-        // {
+        /// <summary>
+        /// Faz o login do usuario.
+        /// Tratei o login como uma QUERY no CQRS, pois em teoria um login não modifica o banco de dados. Porém, não se passa
+        /// senhas e informações sensiveis do usuario atraves de um método GET, portanto foi usado POST mas mantendo toda a estrutura
+        /// interna da lógica como QUERY.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<IActionResult> LogarUsuario(LogarUsuarioQuery query)
+        {
+            if (!query.IsValid()) return CustomResponse(query.GetValidationResult());
 
-        // }
+            return CustomResponse(await _mediator.EnviarQuery(query));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet("loggedin")]
+        public async Task<IActionResult> IsLoggedIn()
+        {
+            await Task.Yield();
+            return Ok();
+        }
     }
 }

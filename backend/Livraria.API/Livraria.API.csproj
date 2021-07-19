@@ -3,17 +3,19 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8"/>
-    <PackageReference Include="FluentValidation" Version="10.3.0"/>
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8"/>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8"/>
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.8"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.8" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Livraria.Infra\Livraria.Infra.csproj"/>
-    <ProjectReference Include="..\Livraria.Domain\Livraria.Domain.csproj"/>
+    <ProjectReference Include="..\Livraria.Infra\Livraria.Infra.csproj" />
+    <ProjectReference Include="..\Livraria.Domain\Livraria.Domain.csproj" />
   </ItemGroup>
 </Project>

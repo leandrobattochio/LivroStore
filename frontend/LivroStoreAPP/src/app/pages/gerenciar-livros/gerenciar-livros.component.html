@@ -1,0 +1,40 @@
+<form class="example-form" name="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Imagem da Capa</mat-label>
+        <input matInput name="imagemCapa" placeholder="Imagem da Capa" required [(ngModel)]="entity.imagemCapa">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input matInput type="text" name="titulo" required [(ngModel)]="entity.titulo">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>ISBN</mat-label>
+        <input matInput type="text" name="isbn" required [(ngModel)]="entity.isbn">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Editora</mat-label>
+        <input matInput type="text" name="editora" required [(ngModel)]="entity.editora">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Autor</mat-label>
+        <input matInput type="text" name="autor" required [(ngModel)]="entity.autor">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Sinopse</mat-label>
+        <textarea matInput name="sinopse" required [(ngModel)]="entity.sinopse"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Data de Publicação</mat-label>
+        <input matInput type="date" name="datapublicacao" required [(ngModel)]="entity.dataPublicacao">
+    </mat-form-field>
+
+    <br>
+    <button *ngIf="modoEditar" mat-raised-button (click)="salvar()">Salvar</button>
+    <button *ngIf="!modoEditar" mat-raised-button (click)="cadastrar()">Cadastrar</button>
+</form>

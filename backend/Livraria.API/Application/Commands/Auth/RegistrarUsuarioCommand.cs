@@ -31,19 +31,26 @@ namespace Livraria.API.Application.Commands
 
         public class RegistrarUsuarioCommandBody
         {
-            public RegistrarUsuarioCommandBody(string usuario, string senha, string email)
+            public RegistrarUsuarioCommandBody(string usuario, string senha, string email, enTipoUsuario tipoUsuario)
             {
                 Usuario = usuario;
                 Senha = senha;
                 Email = email;
+                TipoUsuario = tipoUsuario;
             }
 
             public string Usuario { get; set; }
             public string Senha { get; set; }
             public string Email { get; set; }
+            public enTipoUsuario TipoUsuario { get;set; }
         }
     }
 
+    public enum enTipoUsuario
+    {
+        Normal = 1,
+        Administrador = 2
+    }
 
     /// <summary>
     /// Validação para o command de registrar usuario

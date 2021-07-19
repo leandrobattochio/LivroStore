@@ -1,0 +1,34 @@
+<form class="example-form" name="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Palavra Chave</mat-label>
+        <input matInput name="palavraChave" [(ngModel)]="palavraChave">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Data Inicial</mat-label>
+        <input matInput type="date" name="dataInicio" [(ngModel)]="dataInicial">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Data Final</mat-label>
+        <input matInput type="date" name="dataFim" [(ngModel)]="dataFinal">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="filtrar()">Filtrar</button>
+</form>
+
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let item of listaLivros">
+
+        <mat-card>
+            <mat-card-title>{{ item.titulo}}</mat-card-title>
+            <img mat-card-image src="{{ item.imagemCapa }}">
+            <mat-card-actions>
+                <button mat-raised-button (click)="abrirDetalhes(item.id)">Detalhes</button>
+                <button mat-raised-button (click)="excluirLivro(item.id)">Excluir</button>
+                <button mat-raised-button (click)="atualizarLivro(item.id)">Atualizar</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

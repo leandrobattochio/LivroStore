@@ -2,10 +2,12 @@ using System.Threading.Tasks;
 using Livraria.API.Application.Commands;
 using Livraria.API.Application.Queries;
 using Livraria.Infra.Messages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.API.Controllers
 {
+    
     [Route("api/v1/livro")]
     public class LivroController : MainController
     {
@@ -22,6 +24,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(AdicionarLivroCommand command)
         {
             // Validação do comando
@@ -37,6 +40,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{LivroId}")]
+        [Authorize(Roles = "Atualizar")]
         public async Task<IActionResult> Update(AtualizarLivroCommand command)
         {
             // Validação do comando
@@ -52,6 +56,7 @@ namespace Livraria.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpDelete("{LivroId}")]
+        [Authorize(Roles = "Excluir")]
         public async Task<IActionResult> Excluir(ExcluirLivroCommand command)
         {
             // Validação do Comando

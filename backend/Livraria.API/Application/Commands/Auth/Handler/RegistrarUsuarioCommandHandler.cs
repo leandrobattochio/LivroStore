@@ -21,6 +21,14 @@ namespace Livraria.API.Application.Commands
 
             var resultado = await _userManager.CreateAsync(usuario, request.Body.Senha);
 
+            if(request.Body.TipoUsuario == enTipoUsuario.Administrador)
+            {
+            }
+            else
+            {
+
+            }
+
             // Adiciona erros se houver algum
             if (resultado.Succeeded == false)
                 foreach (var p in resultado.Errors)

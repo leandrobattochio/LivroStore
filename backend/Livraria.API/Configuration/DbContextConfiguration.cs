@@ -28,11 +28,11 @@ namespace Livraria.API.Configuration
             // Configurações Identity Core
             services.AddDefaultIdentity<IdentityUser>(options =>
             {
+                // Para fins de desenvolvimento, desabilitado exigencia de senha forte.
+                // e relacionados a email.
+
                 options.SignIn.RequireConfirmedAccount = false;
                 options.User.RequireUniqueEmail = true;
-
-                // Para fins de desenvolvimento, desabilitado exigencia de senha forte.
-
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireLowercase = false;
