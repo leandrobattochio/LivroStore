@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario: string = "lelejau";
-  senha: string = "123456";
+  usuario: string = "";
+  senha: string = "";
 
   constructor(private service: AuthService, private router: Router) { }
 
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     var command = new LoginUsuarioCommand();
     command.usuario = this.usuario;
     command.senha = this.senha;
-
 
     this.service.login(command).toPromise()
       .then((r) => {

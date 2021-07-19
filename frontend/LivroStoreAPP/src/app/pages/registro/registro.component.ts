@@ -10,10 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegistroComponent implements OnInit {
 
 
-  usuario : string = "teste";
-  senha : string = "123456";
-  email : string = "asd@asd.com.br";
-  tipo : number = 2;
+  usuario: string = "";
+  senha: string = "";
+  email: string = "";
+  tipo: number = 2;
 
   constructor(private service: AuthService) { }
 

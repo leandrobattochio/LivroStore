@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.API.Application.Queries
 {
+    /// <summary>
+    /// Representa uma query para obter livros com base em filtros determinados
+    /// </summary>
     public class ObterLivrosQuery : Query<QueryResponseMessage<ObterLivrosQueryRetorno>>
     {
         [FromQuery]
@@ -67,6 +70,9 @@ namespace Livraria.API.Application.Queries
         }
     }
 
+    /// <summary>
+    /// Validação. Em branco pois não é obrigatorio mandar nenhum filtro.
+    /// </summary>
     public class ObterLivrosQueryValidation : AbstractValidator<ObterLivrosQuery>
     {
         public ObterLivrosQueryValidation()

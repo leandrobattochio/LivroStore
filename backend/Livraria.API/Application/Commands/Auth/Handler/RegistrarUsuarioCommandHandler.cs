@@ -21,6 +21,11 @@ namespace Livraria.API.Application.Commands
 
             var resultado = await _userManager.CreateAsync(usuario, request.Body.Senha);
 
+            // Adiciona erros se houver algum
+            if (resultado.Succeeded == false)
+                foreach (var p in resultado.Errors)
+                    AdicionarErro(p.Description);
+
             // Adiciona o usuario na Role
             var user = await _userManager.FindByNameAsync(request.Body.Usuario);
 
@@ -32,11 +37,6 @@ namespace Livraria.API.Application.Commands
             {
                 await _userManager.AddToRoleAsync(user, "Normal");
             }
-
-            // Adiciona erros se houver algum
-            if (resultado.Succeeded == false)
-                foreach (var p in resultado.Errors)
-                    AdicionarErro(p.Description);
 
             // Retorna OK
             return new CommonCommandResult(ValidationResult);

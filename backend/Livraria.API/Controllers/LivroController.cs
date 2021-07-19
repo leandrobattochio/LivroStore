@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.API.Controllers
 {
-    
+
     /// <summary>
     /// Controller dos livros.
     /// </summary>
@@ -69,13 +69,11 @@ namespace Livraria.API.Controllers
             return CustomResponse(await _mediator.EnviarComando(command));
         }
 
-
         /// <summary>
         /// Obter todos os livros cadastrados.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> ObterTodos(ObterLivrosQuery query)
         {
             // Validação da query

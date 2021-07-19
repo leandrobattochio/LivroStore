@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.API.Application.Queries
 {
+    /// <summary>
+    /// Representa uma Query para obter um livro a partir do ID.
+    /// </summary>
     public class ObterLivroQuery : Query<QueryResponseMessage<ObterLivroQueryResult>>
     {
         [FromRoute]

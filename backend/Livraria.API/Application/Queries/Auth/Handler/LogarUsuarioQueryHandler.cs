@@ -21,7 +21,7 @@ namespace Livraria.API.Application.Queries
 
             // Tenta fazer o login com o usuario e a senha.
             var signInResult = await _signInManager.PasswordSignInAsync(request.Body.Usuario, request.Body.Senha, false, true);
-            
+
             if (signInResult.Succeeded)
             {
                 return new QueryResponseMessage<LogarUsuarioQueryResult>(ValidationResult, await GerarTokenJWT(request.Body.Usuario));
@@ -53,6 +53,7 @@ namespace Livraria.API.Application.Queries
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Subject = identityClaims,
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

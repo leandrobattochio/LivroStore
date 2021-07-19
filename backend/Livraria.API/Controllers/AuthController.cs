@@ -34,9 +34,9 @@ namespace Livraria.API.Controllers
 
         /// <summary>
         /// Faz o login do usuario.
-        /// Tratei o login como uma QUERY no CQRS, pois em teoria um login não modifica o banco de dados. Porém, não se passa
-        /// senhas e informações sensiveis do usuario atraves de um método GET, portanto foi usado POST mas mantendo toda a estrutura
-        /// interna da lógica como QUERY.
+        /// Tratei o login como uma QUERY no CQRS, pois em teoria um login nï¿½o modifica o banco de dados. Porï¿½m, nï¿½o se passa
+        /// senhas e informaï¿½ï¿½es sensiveis do usuario atraves de um mï¿½todo GET, portanto foi usado POST mas mantendo toda a estrutura
+        /// interna da lï¿½gica como QUERY.
         /// </summary>
         /// <returns></returns>
         [HttpPost("login")]
@@ -48,15 +48,19 @@ namespace Livraria.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Endpoint apenas para verificar se o usuario esta logado no sistema.
         /// </summary>
         /// <returns></returns>
         [Authorize]
         [HttpGet("loggedin")]
-        public async Task<IActionResult> IsLoggedIn()
-        {
-            await Task.Yield();
-            return Ok();
-        }
+        public async Task<IActionResult> IsLoggedIn() { await Task.Yield(); return Ok(); }
+
+        /// <summary>
+        /// Endpoint apenas para verificar se o usuario possui a role de Administrador
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("adminrole")]
+        public async Task<IActionResult> IsAdminRole() { await Task.Yield(); return Ok(); }
     }
 }

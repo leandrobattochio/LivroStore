@@ -39,7 +39,7 @@ namespace Livraria.API.Application.Queries.Handler
             }
 
             // Filtra por A-Z ou Z-A
-            if (request?.Order != "")
+            if (request.Order != null)
             {
                 if (request.Order.Equals("asc", StringComparison.CurrentCultureIgnoreCase))
                 {

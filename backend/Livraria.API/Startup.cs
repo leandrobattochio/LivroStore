@@ -25,6 +25,7 @@ namespace Livraria.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            // Mediator
             services.AddMediatR(typeof(Startup));
 
             // CArrega a classe de configuração do jwt do appsettings.json
