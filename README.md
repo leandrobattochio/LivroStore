@@ -2,7 +2,7 @@
 
 Conceitos e Tecnologias usadas:
 
-Back-End: Domain Driven Design, CQRS, Entity Framework, Identity Core, Autenticação JWT.
+Back-End: Domain Driven Design, CQRS, Entity Framework, Identity Core, Autenticação JWT, Mediator.
 Front-End: Angular + Angular Material.
 
 Escopo
